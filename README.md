@@ -1,5 +1,8 @@
-# ABA
+# ABA Generator
 Provides a simple way to generate an ABA file which is used by banks to allow for batch transactions.
+
+## Credit
+This was forked from https://github.com/anam-hossain/aba due to an issue with string padding on the lodgement reference. This fork fixes the text to be left justified as opposed to right justified.
 
 ## Features
 

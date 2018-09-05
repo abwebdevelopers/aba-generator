@@ -2,7 +2,7 @@
 
 namespace Joelwmale\AbaGenerator;
 
-use Anam\Aba\Validation\Validator;
+use Joelwmale\AbaGenerator\Validation\Validator;
 use \Exception;
 
 class Aba

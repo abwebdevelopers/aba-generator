@@ -3,7 +3,7 @@
 namespace Joelwmale\AbaGenerator\Test;
 
 use \Exception;
-use Anam\Aba\Validation\Validator;
+use Joelwmale\AbaGenerator\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase

@@ -3,7 +3,7 @@
 namespace Joelwmale\AbaGenerator\Test;
 
 use PHPUnit\Framework\TestCase;
-use Anam\Aba\Aba;
+use Joelwmale\AbaGenerator\Aba;
 
 class AbaTest extends TestCase
 {
@@ -33,7 +33,7 @@ class AbaTest extends TestCase
 
     public function testAddDetailRecord()
     {
-        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                            Payroll number062-111111111111FOO BAR         00000000';
+        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    062-111111111111FOO BAR         00000000';
 
         $this->aba->addDescriptiveRecord($this->descriptiveData());
 
@@ -69,7 +69,7 @@ class AbaTest extends TestCase
     public function testGenerate()
     {
         $expectedDescriptiveString = '0                 01CBA       FOO BAR CORPORATION       301500PAYROLL     290616                                        ';
-        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                            Payroll number062-111111111111FOO BAR         00000000';
+        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    062-111111111111FOO BAR         00000000';
         $expectedFileTotalString = '7999-999            000002508700000250870000000000                        000001                                        ';
                 
         $this->aba->addDescriptiveRecord($this->descriptiveData());
