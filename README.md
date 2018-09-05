@@ -14,7 +14,7 @@ Provides a simple way to generate an ABA file which is used by banks to allow fo
 `Aba` is available via Composer
 
 ```bash
-$ composer require anam/aba
+$ composer require joelwmale/aba-generator
 ```
 
 ## Integrations
@@ -27,13 +27,13 @@ After you have installed the `Aba`, open the `config/app.php` file which is incl
 In the `$providers` array add the following service provider.
 
 ```php
-Anam\Aba\AbaServiceProvider::class
+Joelwmale\AbaGenerator\AbaServiceProvider::class
 ```
 
 Add the facade of this package to the `$aliases` array.
 
 ```php
-'Aba' => Anam\Aba\Facades\Aba::class,
+'Aba' => Joelwmale\AbaGenerator\Facades\Aba::class,
 ```
 
 You can now use this facade in place of instantiating the converter yourself in the following examples.
@@ -41,7 +41,7 @@ You can now use this facade in place of instantiating the converter yourself in 
 ## Usage
 
 ```php
-use Anam\Aba\Aba;
+use Joelwmale\AbaGenerator\Aba;
 
 $aba = new Aba();
 
