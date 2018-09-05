@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Aba\Validation;
+namespace Joelwmale\AbaGenerator\Validation;
 
 use \Exception;
 

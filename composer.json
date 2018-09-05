@@ -1,15 +1,21 @@
 {
-    "name": "anam/aba",
+    "name": "joelwmale/aba-generator",
     "description": "Provides a simple way to generate an ABA file which is used by banks to allow for batch transactions.",
     "keywords": [
         "ABA file",
         "Aba",
         "Australian Bankers Association",
-        "Batch transactions"
+        "Batch transactions",
+        "PHP",
+        "Laravel"
     ],
-    "homepage": "https://github.com/anam-hossain/aba",
+    "homepage": "https://github.com/joelwmale/aba-generator",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Joel Male",
+            "email": "joel@joelmale.com"
+        },
         {
             "name": "Anam hossain",
             "email": "enam33@gmail.com"
@@ -23,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Anam\\Aba\\" : "src/" 
+            "Joelwmale\\AbaGenerator\\" : "src/" 
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Anam\\Aba\\Test\\": "tests"
+            "Joelwmale\\AbaGenerator\\Test\\": "tests"
         }
     }
 }

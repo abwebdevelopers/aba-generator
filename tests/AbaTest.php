@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Aba\Test;
+namespace Joelwmale\AbaGenerator\Test;
 
 use PHPUnit\Framework\TestCase;
 use Anam\Aba\Aba;

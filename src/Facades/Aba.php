@@ -1,5 +1,5 @@
 <?php
-namespace Anam\Aba\Facades;
+namespace Joelwmale\AbaGenerator\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Anam\Aba;
+namespace Joelwmale\AbaGenerator;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Aba;
+namespace Joelwmale\AbaGenerator;
 
 use Anam\Aba\Validation\Validator;
 use \Exception;
@@ -238,7 +238,7 @@ class Aba
 
         // Lodgement Reference
         // Position 63-80
-        $this->detailString .= $this->padString($transaction['reference'], '18', ' ', STR_PAD_LEFT);
+        $this->detailString .= $this->padString($transaction['reference'], '18', ' ', STR_PAD_RIGHT);
 
         // Trace BSB
         // Bank (FI)/State/Branch and account number of User to enable retracing of the entry to its source if necessary
