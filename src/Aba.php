@@ -3,13 +3,12 @@
 namespace Joelwmale\AbaGenerator;
 
 use Joelwmale\AbaGenerator\Validation\Validator;
-use \Exception;
 
 class Aba
 {
     /**
-     * Descriptive record type 0. 
-     * 
+     * Descriptive record type 0.
+     *
      * @const string
      */
     const DESCRIPTIVE_RECORD = '0';
@@ -17,79 +16,80 @@ class Aba
     /**
      * Detail record Type 1.
      * There are three detail record types 1, 2 and 3.
-     * Only type 1 is used for batch tranactions
-     * 
+     * Only type 1 is used for batch tranactions.
+     *
      * @const string
      */
     const DETAIL_RECORD = '1';
 
     /**
-     * File total record type 7 
-     * 
+     * File total record type 7.
+     *
      * @const string
      */
     const FILE_TOTAL_RECORD = '7';
 
     /**
-     * The APCA standard string to generate ABA file
-     * 
+     * The APCA standard string to generate ABA file.
+     *
      * @var string
      */
     protected $abaFileContent = '';
 
     /**
-     * Total number of the transactions
-     * 
-     * @var integer
+     * Total number of the transactions.
+     *
+     * @var int
      */
     protected $totalTransactions = 0;
 
     /**
-     *  Credit total amount
-     *  
+     *  Credit total amount.
+     *
      * @var float
      */
     protected $totalCreditAmount = 0;
 
     /**
-     * Debit total amount
-     * 
+     * Debit total amount.
+     *
      * @var float
      */
     protected $totalDebitAmount = 0;
 
     /**
-     * Descriptive record
-     * 
+     * Descriptive record.
+     *
      * @var array
      */
     protected $descriptiveRecord;
 
     /**
-     * Descriptive or file header string
-     * 
+     * Descriptive or file header string.
+     *
      * @var string
      */
     protected $descriptiveString = '';
 
     /**
-     * Detail string
-     * 
+     * Detail string.
+     *
      * @var string
      */
     protected $detailString = '';
 
     /**
-     * File total string
-     * 
+     * File total string.
+     *
      * @var string
      */
     protected $fileTotalString = '';
 
     /**
-     * Alias of addDescriptiveRecord
-     * 
-     * @param  array  $record
+     * Alias of addDescriptiveRecord.
+     *
+     * @param array $record
+     *
      * @return string
      */
     public function addFileDetails(array $record)
@@ -98,9 +98,10 @@ class Aba
     }
 
     /**
-     * Generate descriptive record string
-     * 
-     * @param  array  $record
+     * Generate descriptive record string.
+     *
+     * @param array $record
+     *
      * @return string
      */
     public function addDescriptiveRecord(array $record)
@@ -162,9 +163,10 @@ class Aba
     }
 
     /**
-     * Alias of AddDetailRecord
-     * 
-     * @param  array  $record
+     * Alias of AddDetailRecord.
+     *
+     * @param array $record
+     *
      * @return string
      */
     public function addTransaction(array $transaction)
@@ -173,18 +175,19 @@ class Aba
     }
 
     /**
-     * Generate detail record string
-     * 
-     * @param  array  $transaction
+     * Generate detail record string.
+     *
+     * @param array $transaction
+     *
      * @return string
      */
     public function addDetailRecord(array $transaction)
     {
-        if (! isset($transaction['indicator'])) {
+        if (!isset($transaction['indicator'])) {
             $transaction['indicator'] = ' ';
         }
 
-        if (! isset($transaction['withholding_tax'])) {
+        if (!isset($transaction['withholding_tax'])) {
             $transaction['withholding_tax'] = 0;
         }
 
@@ -205,7 +208,6 @@ class Aba
 
         // Increment total transactions
         $this->totalTransactions++;
-
 
         // Generate detail record string for a transaction
         // Record Type
@@ -263,7 +265,7 @@ class Aba
     }
 
     /**
-     * Generate file total string
+     * Generate file total string.
      *
      * @return string
      */
@@ -309,44 +311,46 @@ class Aba
         return $this->fileTotalString;
     }
 
-    /** 
-     * Generate ABA file content
+    /**
+     * Generate ABA file content.
      *
      * @return string
-    */
+     */
     public function generate()
     {
         $this->addFileTotalRecord();
 
-        $this->abaFileContent = $this->descriptiveString . $this->detailString . $this->fileTotalString;
+        $this->abaFileContent = $this->descriptiveString.$this->detailString.$this->fileTotalString;
 
         return $this->abaFileContent;
     }
 
     /**
-     * Download ABA file
-     * 
-     * @param  string  $downloadAs
+     * Download ABA file.
+     *
+     * @param string $downloadAs
+     *
      * @return void
      */
     public function download($downloadAs = '')
     {
-        $downloadAs = $downloadAs? $downloadAs : "transactions";
+        $downloadAs = $downloadAs ? $downloadAs : 'transactions';
 
         header('Content-Description: Aba file');
-        header("Content-Type: text/plain");
+        header('Content-Type: text/plain');
         header("Content-Disposition: attachment; filename={$downloadAs}.aba");
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
-        header('Content-Length: ' . strlen($this->abaFileContent));
+        header('Content-Length: '.strlen($this->abaFileContent));
         echo $this->abaFileContent;
         exit;
     }
 
     /**
-     * Generate blank spaces
-     * 
-     * @param int  $number [description]
+     * Generate blank spaces.
+     *
+     * @param int $number [description]
+     *
      * @return string
      */
     public function AddBlankSpaces($number)
@@ -355,12 +359,13 @@ class Aba
     }
 
     /**
-     * Pad a string to a certain length with another string
-     * 
-     * @param  string $value
-     * @param  int $length
-     * @param  string $padString
-     * @param  int $type
+     * Pad a string to a certain length with another string.
+     *
+     * @param string $value
+     * @param int    $length
+     * @param string $padString
+     * @param int    $type
+     *
      * @return string
      */
     public function padString($value, $length, $padString = ' ', $type = STR_PAD_RIGHT)
@@ -369,9 +374,10 @@ class Aba
     }
 
     /**
-     * Convert decimal points to cents
-     * 
-     * @param  float $amount
+     * Convert decimal points to cents.
+     *
+     * @param float $amount
+     *
      * @return int
      */
     public function dollarsToCents($amount)
@@ -380,8 +386,8 @@ class Aba
     }
 
     /**
-     * Get total Credit amount
-     * 
+     * Get total Credit amount.
+     *
      * @return float
      */
     public function getTotalCreditAmount()
@@ -390,8 +396,8 @@ class Aba
     }
 
     /**
-     * Get total debit amount
-     * 
+     * Get total debit amount.
+     *
      * @return float
      */
     public function getTotalDebitAmount()
@@ -400,9 +406,10 @@ class Aba
     }
 
     /**
-     * Check a transaction is debit or credit and sum the amount accordingly
-     * 
-     * @param  array  $transaction
+     * Check a transaction is debit or credit and sum the amount accordingly.
+     *
+     * @param array $transaction
+     *
      * @return void
      */
     protected function calculateDebitOrCreditAmount(array $transaction)
@@ -415,8 +422,8 @@ class Aba
     }
 
     /**
-     * Calculate net total
-     * 
+     * Calculate net total.
+     *
      * @return float
      */
     protected function getNetTotal()
@@ -425,9 +432,9 @@ class Aba
     }
 
     /**
-     * Line break
+     * Line break.
      *
-     * @return  string
+     * @return string
      */
     protected function addLineBreak()
     {
