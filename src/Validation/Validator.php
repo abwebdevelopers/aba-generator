@@ -2,13 +2,13 @@
 
 namespace Joelwmale\AbaGenerator\Validation;
 
-use \Exception;
+use Exception;
 
 class Validator
 {
     /**
-     * Transaction codes
-     * 
+     * Transaction codes.
+     *
      * @var array
      */
     public static $transactionCodes = [
@@ -21,12 +21,12 @@ class Validator
         'allotment'                                 => '55',
         'dividend'                                  => '56',
         'debenture'                                 => '57',
-        'note_interest'                             => '57'
+        'note_interest'                             => '57',
     ];
 
     /**
-     * Validation rules
-     * 
+     * Validation rules.
+     *
      * @var array
      */
     protected static $rules = [
@@ -46,8 +46,8 @@ class Validator
     ];
 
     /**
-     * Error messages
-     * 
+     * Error messages.
+     *
      * @var array
      */
     protected static $messages = [
@@ -64,11 +64,12 @@ class Validator
     ];
 
     /**
-     * Validate a record
-     * 
-     * @param  array  $record
-     * @param  array  $matchRules
-     * @param  string $recordType
+     * Validate a record.
+     *
+     * @param array  $record
+     * @param array  $matchRules
+     * @param string $recordType
+     *
      * @return void
      */
     public static function validate(array $record, array $matchRules, $recordType = 'Detail')
@@ -76,8 +77,8 @@ class Validator
         self::verifyRecord($record, $matchRules, $recordType);
 
         foreach ($matchRules as $rule) {
-            if (! preg_match(self::$rules[$rule], $record[$rule])) {
-                throw new Exception($recordType . ': ' . self::$messages[$rule]);
+            if (!preg_match(self::$rules[$rule], $record[$rule])) {
+                throw new Exception($recordType.': '.self::$messages[$rule]);
             }
         }
 
@@ -85,11 +86,12 @@ class Validator
     }
 
     /**
-     * Check any required fields is missing
-     * 
-     * @param  array  $record
-     * @param  array  $matchRules
-     * @param  string $recordType
+     * Check any required fields is missing.
+     *
+     * @param array  $record
+     * @param array  $matchRules
+     * @param string $recordType
+     *
      * @return void
      */
     public static function verifyRecord(array $record, array $matchRules, $recordType = 'Detail')
@@ -97,22 +99,23 @@ class Validator
         $missingFields = array_diff($matchRules, array_keys($record));
 
         if ($missingFields) {
-            throw new Exception("Some required {$recordType} fields missing: ". implode(",", $missingFields));
+            throw new Exception("Some required {$recordType} fields missing: ".implode(',', $missingFields));
         }
 
         return true;
     }
 
     /**
-     * Validate a transaction code
-     * 
-     * @param  string $code
+     * Validate a transaction code.
+     *
+     * @param string $code
+     *
      * @return void
      */
     public static function validateTransactionCode($code)
     {
-        if (! in_array($code, self::$transactionCodes)) {
-            throw new Exception("Transaction code is invalid.");
+        if (!in_array($code, self::$transactionCodes)) {
+            throw new Exception('Transaction code is invalid.');
         }
 
         return true;
@@ -120,19 +123,20 @@ class Validator
 
     /**
      * Validate processing date. The date when transaction will be perform.
-     * 
-     * @param  string  $date
+     *
+     * @param string $date
+     *
      * @return void
      */
     public static function validateProcessDate($date)
     {
-        if (! is_string($date) && ! is_numeric($date)) {
+        if (!is_string($date) && !is_numeric($date)) {
             throw new Exception("Process date is invalid. Process date must be in 'DDMMYY' format");
         }
 
         $parsed = date_parse_from_format('dmy', $date);
 
-        if (! ($parsed['error_count'] === 0 && $parsed['warning_count'] === 0)) {
+        if (!($parsed['error_count'] === 0 && $parsed['warning_count'] === 0)) {
             throw new Exception("Process date is invalid. Process date must be in 'DDMMYY' format");
         }
 
@@ -140,15 +144,16 @@ class Validator
     }
 
     /**
-     * Check a number is numeric or not
-     * 
-     * @param  float $value
+     * Check a number is numeric or not.
+     *
+     * @param float $value
+     *
      * @return void
      */
     public static function validateNumeric($value)
     {
-        if (! is_numeric($value)) {
-            throw new Exception("Amount or Withholding tax amount must be a numeric number");
+        if (!is_numeric($value)) {
+            throw new Exception('Amount or Withholding tax amount must be a numeric number');
         }
 
         return true;

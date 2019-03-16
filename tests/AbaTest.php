@@ -2,8 +2,8 @@
 
 namespace Joelwmale\AbaGenerator\Test;
 
-use PHPUnit\Framework\TestCase;
 use Joelwmale\AbaGenerator\Aba;
+use PHPUnit\Framework\TestCase;
 
 class AbaTest extends TestCase
 {
@@ -51,7 +51,7 @@ class AbaTest extends TestCase
     public function testAddFileTotalRecord()
     {
         $expectedFileTotalString = '7999-999            000002508700000250870000000000                        000001                                        ';
-        
+
         $this->aba->addDescriptiveRecord($this->descriptiveData());
         $this->aba->addDetailRecord($this->detailData());
 
@@ -71,15 +71,15 @@ class AbaTest extends TestCase
         $expectedDescriptiveString = '0                 01CBA       FOO BAR CORPORATION       301500PAYROLL     290616                                        ';
         $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    062-111111111111FOO BAR         00000000';
         $expectedFileTotalString = '7999-999            000002508700000250870000000000                        000001                                        ';
-                
+
         $this->aba->addDescriptiveRecord($this->descriptiveData());
         $this->aba->addDetailRecord($this->detailData());
 
         $abaString = $this->aba->generate();
 
-        $this->assertContains($expectedDescriptiveString, $abaString, "Testing descriptive record string is valid");
-        $this->assertContains($expectedDetailString, $abaString, "Testing detail record string is valid");
-        $this->assertContains($expectedFileTotalString, $abaString, "Testing file total record string is valid");
+        $this->assertContains($expectedDescriptiveString, $abaString, 'Testing descriptive record string is valid');
+        $this->assertContains($expectedDetailString, $abaString, 'Testing detail record string is valid');
+        $this->assertContains($expectedFileTotalString, $abaString, 'Testing file total record string is valid');
     }
 
     public function testAddBlankSpaces()
@@ -134,26 +134,26 @@ class AbaTest extends TestCase
     protected function descriptiveData()
     {
         return [
-            'bsb' => '062-111', // bsb
+            'bsb'            => '062-111', // bsb
             'account_number' => '111111111', // account number
-            'bank_name' => 'CBA', // bank name
-            'user_name' => 'FOO BAR CORPORATION', // Account name, up to 26 characters
-            'remitter' => 'FOO BAR', // Remitter
-            'user_number' => '301500', // direct entry id for CBA
-            'description' => 'PAYROLL', // description
-            'process_date'  => '290616' // DDMMYY
+            'bank_name'      => 'CBA', // bank name
+            'user_name'      => 'FOO BAR CORPORATION', // Account name, up to 26 characters
+            'remitter'       => 'FOO BAR', // Remitter
+            'user_number'    => '301500', // direct entry id for CBA
+            'description'    => 'PAYROLL', // description
+            'process_date'   => '290616', // DDMMYY
         ];
     }
 
     protected function detailData()
     {
         return [
-            'bsb' => '111-111', // bsb with hyphen
-            'account_number' => '999999999',
-            'account_name'  => 'Jhon doe',
-            'reference' => 'Payroll number',
+            'bsb'               => '111-111', // bsb with hyphen
+            'account_number'    => '999999999',
+            'account_name'      => 'Jhon doe',
+            'reference'         => 'Payroll number',
             'transaction_code'  => '53',
-            'amount' => '250.87'
+            'amount'            => '250.87',
         ];
     }
 }

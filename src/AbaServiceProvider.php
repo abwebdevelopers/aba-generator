@@ -1,4 +1,5 @@
 <?php
+
 namespace Joelwmale\AbaGenerator;
 
 use Illuminate\Support\ServiceProvider;
@@ -19,8 +20,8 @@ class AbaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('aba', function() {
-            return new Aba;
+        $this->app->bind('aba', function () {
+            return new Aba();
         });
     }
 

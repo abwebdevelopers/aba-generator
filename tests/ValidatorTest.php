@@ -2,7 +2,7 @@
 
 namespace Joelwmale\AbaGenerator\Test;
 
-use \Exception;
+use Exception;
 use Joelwmale\AbaGenerator\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
@@ -59,22 +59,22 @@ class ValidatorTest extends TestCase
     protected function detailData()
     {
         return [
-            'bsb' => '111-111', // bsb with hyphen
-            'account_number' => '999999999',
-            'account_name'  => 'Jhon doe',
-            'reference' => 'Payroll number',
+            'bsb'               => '111-111', // bsb with hyphen
+            'account_number'    => '999999999',
+            'account_name'      => 'Jhon doe',
+            'reference'         => 'Payroll number',
             'transaction_code'  => '53',
-            'amount' => '250.87'
+            'amount'            => '250.87',
         ];
     }
 
     protected function inaccurateData()
     {
         return [
-            'bsb' => '111111', // bsb with hyphen
+            'bsb'            => '111111', // bsb with hyphen
             'account_number' => '99999999944',
-            'reference' => 'Payroll number',
-            'amount' => '250.87'
+            'reference'      => 'Payroll number',
+            'amount'         => '250.87',
         ];
     }
 }
