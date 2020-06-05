@@ -320,7 +320,7 @@ class Aba
     {
         $this->addFileTotalRecord();
 
-        $this->abaFileContent = $this->descriptiveString.$this->detailString.$this->fileTotalString;
+        $this->abaFileContent = $this->descriptiveString . $this->detailString . $this->fileTotalString;
 
         return $this->abaFileContent;
     }
@@ -341,7 +341,7 @@ class Aba
         header("Content-Disposition: attachment; filename={$downloadAs}.aba");
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
-        header('Content-Length: '.strlen($this->abaFileContent));
+        header('Content-Length: ' . strlen($this->abaFileContent));
         echo $this->abaFileContent;
         exit;
     }
@@ -428,7 +428,8 @@ class Aba
      */
     protected function getNetTotal()
     {
-        return abs($this->totalCreditAmount - $this->totalDebitAmount);
+        // round: A workaround for floats when PHP thinks 123.45 !== 123.45
+        return round(abs($this->totalCreditAmount - $this->totalDebitAmount), 2);
     }
 
     /**
