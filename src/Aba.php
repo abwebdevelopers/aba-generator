@@ -1,8 +1,8 @@
 <?php
 
-namespace Joelwmale\AbaGenerator;
+namespace ABWebDevelopers\AbaGenerator;
 
-use Joelwmale\AbaGenerator\Validation\Validator;
+use ABWebDevelopers\AbaGenerator\Validation\Validator;
 
 class Aba
 {

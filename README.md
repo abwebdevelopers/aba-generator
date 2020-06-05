@@ -17,7 +17,7 @@ This was forked from https://github.com/anam-hossain/aba due to an issue with st
 `Aba` is available via Composer
 
 ```bash
-$ composer require joelwmale/aba-generator
+$ composer require abwebdevelopers/aba-generator
 ```
 
 ## Integrations
@@ -30,13 +30,13 @@ After you have installed the `Aba`, open the `config/app.php` file which is incl
 In the `$providers` array add the following service provider.
 
 ```php
-Joelwmale\AbaGenerator\AbaServiceProvider::class
+ABWebDevelopers\AbaGenerator\AbaServiceProvider::class
 ```
 
 Add the facade of this package to the `$aliases` array.
 
 ```php
-'Aba' => Joelwmale\AbaGenerator\Facades\Aba::class,
+'Aba' => ABWebDevelopers\AbaGenerator\Facades\Aba::class,
 ```
 
 You can now use this facade in place of instantiating the converter yourself in the following examples.
@@ -44,7 +44,7 @@ You can now use this facade in place of instantiating the converter yourself in 
 ## Usage
 
 ```php
-use Joelwmale\AbaGenerator\Aba;
+use ABWebDevelopers\AbaGenerator\Aba;
 
 $aba = new Aba();
 

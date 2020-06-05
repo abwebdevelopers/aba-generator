@@ -1,8 +1,8 @@
 <?php
 
-namespace Joelwmale\AbaGenerator\Test;
+namespace ABWebDevelopers\AbaGenerator\Test;
 
-use Joelwmale\AbaGenerator\Aba;
+use ABWebDevelopers\AbaGenerator\Aba;
 use PHPUnit\Framework\TestCase;
 
 class AbaTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace Joelwmale\AbaGenerator;
+namespace ABWebDevelopers\AbaGenerator;
 
 use Illuminate\Support\ServiceProvider;
 

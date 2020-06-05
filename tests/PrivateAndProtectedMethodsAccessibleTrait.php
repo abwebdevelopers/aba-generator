@@ -1,6 +1,6 @@
 <?php
 
-namespace Joelwmale\AbaGenerator\Test;
+namespace ABWebDevelopers\AbaGenerator\Test;
 
 trait PrivateAndProtectedMethodsAccessibleTrait
 {

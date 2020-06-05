@@ -1,5 +1,5 @@
 {
-    "name": "joelwmale/aba-generator",
+    "name": "abwebdevelopers/aba-generator",
     "description": "Provides a simple way to generate an ABA file which is used by banks to allow for batch transactions.",
     "keywords": [
         "ABA file",
@@ -9,7 +9,7 @@
         "PHP",
         "Laravel"
     ],
-    "homepage": "https://github.com/joelwmale/aba-generator",
+    "homepage": "https://github.com/abwebdevelopers/aba-generator",
     "license": "MIT",
     "authors": [
         {
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Joelwmale\\AbaGenerator\\" : "src/" 
+            "ABWebDevelopers\\AbaGenerator\\" : "src/" 
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Joelwmale\\AbaGenerator\\Test\\": "tests"
+            "ABWebDevelopers\\AbaGenerator\\Test\\": "tests"
         }
     }
 }

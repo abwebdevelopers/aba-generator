@@ -1,9 +1,9 @@
 <?php
 
-namespace Joelwmale\AbaGenerator\Test;
+namespace ABWebDevelopers\AbaGenerator\Test;
 
 use Exception;
-use Joelwmale\AbaGenerator\Validation\Validator;
+use ABWebDevelopers\AbaGenerator\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase

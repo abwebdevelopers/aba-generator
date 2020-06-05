@@ -1,6 +1,6 @@
 <?php
 
-namespace Joelwmale\AbaGenerator\Facades;
+namespace ABWebDevelopers\AbaGenerator\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
